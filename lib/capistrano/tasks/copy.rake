@@ -49,6 +49,10 @@ namespace :copy do
        upload! release_local_file, TMP_COPY_DIR
        execute :unzip, '-o', uploaded_file, '-d', release_path
      end
+     # We do not need the local file anymore
+     run_locally do
+       execute :rm, "-f", release_local_file
+     end
   end
 
   # Task that gets all our software and pack it together
