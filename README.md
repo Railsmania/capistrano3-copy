@@ -14,7 +14,24 @@ And then execute:
 
 ## Usage
 
-TODO: Write usage instructions here
+In your config/deploy.rb file change your strategy to copy with this line:
+
+    set :scm, 'copy'
+
+That's it!
+Next time you deploy, you will create a zip file, copy it over and
+unpack it in your server.
+
+By default the zip file is created and left in release.zip in the same
+directory of your project, if you would like to use a different
+location, you can overwrite the default with:
+
+    set :copy_local_file, '/tmp/out_of_sight'
+
+By default all files but files in the log/ directory are copied over, if
+you want to change that, you can define any reg expresion with the files
+you want to exclude with:
+    set :copy_exclude, /\.log$/
 
 ## Contributing
 
